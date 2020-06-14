@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan = "true" scanPerod="60 second">
+    <!--scan: 当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。-->
+    <!--scanPeriod: 设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位
+    ，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。
+    <include resource="org/springframework/boot/logging/logback/base.xml" />-->
+
+    <!-- 用来设置上下文名称 输出控制台那有设置contextName-->
+    <contextName>framework-logback</contextName>
+    <!--用来定义变量值，它有两个属性name和value，通过<property>定义的值会被插入到logger上下文中，
+    可以使“${}”来使用变量。-->
+    <property name="log.path" value="d:/logback/logback.log" />
+    <!-- 输出的控制台 appender负责写日志的组件-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n
+            </pattern>
+        </encoder>
+    </appender>
+    <!--滚动记录文件，先将日志记录到指定文件，当符合某个条件时，将日志记录到其他文件。有以下子节点：
+    <append>：如果是 true，日志被追加到文件结尾，如果是 false，清空现存文件，默认是true。
+    <rollingPolicy>:当发生滚动时，决定RollingFileAppender的行为，
+    涉及文件移动和重命名。属性class定义具体的滚动策略类
+    <encoder>：对记录事件进行格式化。-->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!--保留历史日志一个月的时间-->
+            <maxHistory>30</maxHistory>
+            <maxFileSize>10MB</maxFileSize>
+            <!--
+            Spring Boot默认情况下，日志文件10M时，会切分日志文件,这样设置日志文件会在100M时切分日志
+            -->
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date %level [%thread] %logger{36} [%file : %line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 开发环境
+    <springProfile name="dev">
+        <logger name="com.xjgx" level="INFO"/>
+    </springProfile>-->
+
+
+    <!-- 生产环境
+    <springProfile name="pro">
+        <logger name="com.wj" level="ERROR"/>
+    </springProfile>-->
+
+    <!-- 日志级别 表示把>=info级别的日志都输出到控制台
+    日志级别从高到低 off,fatal,error,warn,info,debug,trace,all-->
+    <root level="info">
+        <appender-ref ref="console" />
+        <appender-ref ref="file" />
+    </root>
+    <!-- 输出mybatis的sql -->
+    <logger name="cn.bbf.domain.mapper" level="DEBUG"></logger>
+
+
+</configuration>

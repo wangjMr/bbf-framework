@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.bbf.domain.mapper.SystemMapper">
+
+    <select id="findAllAdmin" resultType="cn.bbf.domain.TestAdmin">
+        SELECT * FROM test_admin t
+    </select>
+
+    <select id="findAllUser" resultType="cn.bbf.domain.BBFUser">
+        SELECT * FROM bbf_user t
+    </select>
+
+</mapper>

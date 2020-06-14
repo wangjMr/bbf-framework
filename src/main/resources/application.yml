@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: dev
+# mybatis
+mybatis:
+    mapper-locations: classpath*:mapper/*Mapper.xml
+    type-aliases-package: cn.bbf.domain
+    configLocation=classpath: /MyBatis-conf.xml
+# file location
+web:
+    upload-path : D:/file/
+
+jasypt:
+  encryptor:
+    password: cn.wjbbf

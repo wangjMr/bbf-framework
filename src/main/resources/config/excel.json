@@ -1,0 +1,8 @@
+[
+  {
+    "id": "1001",
+    "exportFileName": "用户表",
+    "sqlId": "cn.bbf.domain.mapper.SystemMapper.findAllUser",
+    "templateFile": "user.xls"
+  }
+]

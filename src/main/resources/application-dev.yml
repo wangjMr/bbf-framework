@@ -1,0 +1,35 @@
+spring:
+  datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/bbf_repository?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT
+      username: ENC(mzJnp09OZekJFLJfTr1IhQ==)
+      password: ENC(PUZlrSO2Cl9I6vk+MVGObg==)
+  jpa:
+      hibernate:
+        ddl-auto: none #是否自动创建表
+      show-sql: false
+      database-platform: org.hibernate.dialect.MySQL5Dialect
+  jackson:
+    time-zone: GMT+8
+  devtools:
+    restart:
+      enabled: true   #设置开启热部署
+      #additional-paths: src/main/java  #重启目录
+      #exclude: WEB-INF/**
+  redis:
+      host: 47.105.140.1
+      port: 6379
+      password:
+      database: 0
+      jedis:
+        pool:
+          max-idle: 10
+          min-idle: 0
+          max-wait: -1
+          max-active: 200
+      timeout: 1000
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 200
