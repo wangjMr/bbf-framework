@@ -16,7 +16,7 @@ import javax.persistence.Table;
  * @description: TODO
  */
 @Entity
-@Table(name = "t_blog")
+@Table(name = "test_admin")
 @Getter
 @Setter
 public class TestAdmin {

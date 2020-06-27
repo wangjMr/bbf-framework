@@ -16,6 +16,7 @@ public class AsyncTask {
         //模拟执行时间
         System.out.println("线程开始");
         try {
+            System.out.println("线程进行中");
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
